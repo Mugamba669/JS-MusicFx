@@ -1,0 +1,606 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Equalizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="swiper-bundle.min.css">
+  <link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="w3.css">
+	<link rel="stylesheet"href="Jquery/jquery-ui.min.css">
+  <!-- Demo styles -->
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      background:radial-gradient(circle, #222 13px,#444);
+      padding:0px;
+    }
+   .swiper-wrapper .swiper-slide input[type="range"]{
+   	width:80%;
+   	-webkit-appearance:none;
+   	height:3.5px;
+   }
+   .swiper-wrapper .swiper-slide #audio-limit{
+   	transform:scale(-1,-1);
+   }
+   .swiper-wrapper .swiper-slide #audio-limit::-webkit-slider-runnable-track{
+ 	height:2.5px!important;
+   }
+   .swiper-wrapper .swiper-slide input[type="range"]::-webkit-slider-thumb{
+   	-webkit-appearance:none;
+   	width:20px;
+   	height:20px;
+   	background:#fff;
+   	border-radius:20px;
+   	transform:translateY(-8.5px);
+   	}
+   
+ .swiper-wrapper .swiper-slide input[type="range"]::-webkit-slider-runnable-track{
+ 	height:3.5px;
+ }
+ .swiper-wrapper .swiper-slide p{
+ 	text-transform:uppercase;
+ 	color:#ddd;
+ 	font:lighter 19px Verdana;
+ }
+ 
+ .swiper-wrapper .swiper-slide p span{
+ 	font:bolder 17px verdana!important;
+ 	text-transform:none!important;
+ }
+ .swiper-wrapper .swiper-slide p:first-child{
+ 	text-align:center;
+ 	color:#666;
+ 	letter-spacing:3px;
+ 	font:bolder 23px Verdana!important;
+ 	text-shadow:-1px -1px #000,
+ 					-2px  3px #000,
+ 					 1px -2px #000,
+ 					-1px  2px #000;
+ }
+   .swiper-wrapper .swiper-slide select{
+   	width:50%;
+   	float:left!important;
+   	outline:none;
+   	-webkit-appearnace:none;
+   	margin:0 20px;
+   	color:#222;
+   	background:#eee;
+   	font:bold 15px verdana;
+   	border:none;
+   	padding:10px;
+   	border-radius:10px;
+   }
+ :root{
+ 	--w:100px;
+ 	--h:30px;
+ 	--r:10px;
+ 	--ft:bold 14px verdana;
+ 	--bd:2px solid #eee;
+ }
+   .swiper-wrapper .swiper-slide button{ 
+    	width:var(--w);
+   	height:var(--h);
+   	border-radius:var(--r);
+   	border:var(--bd);
+   	font:var(--ft);
+   	outline:none;
+   	background:#eee;
+   	}
+   .swiper-wrapper .swiper-slide .mono p:first-child{ 
+ 	font:bolder 17px verdana!important;
+ 	text-shadow:0px 0px #000!important;
+   color:#ddd;
+   }
+   .swiper-wrapper .swiper-slide .mon{ 
+   	float:right!important;
+   	transform:translateY(-35%);
+   	margin:-30px 0;
+   	padding-right:50px;
+   }
+   .swiper-wrapper .swiper-slide .switch {
+   	float:right!important;
+   	color:#ddd;
+   	font-size:38px;
+   	padding-right:130px;
+   }
+   hr{
+   	width:70%;
+   }
+  #demo{
+  		display:block!important;
+  }
+ #update{
+ 	color:#ddd;
+ 	font-size:19px;
+ }
+ #update span:last-child{
+ 	float:right!important;
+ 	transform:translateY(-20px)translateX(-30px);
+ }
+canvas{
+	width:100%;
+	height:60%;
+	background:black;
+	display:block;
+}
+.room,.tuning,.eq-reset{
+	width:80px!important;
+	height:30px!important;
+	font:bold 14px Verdana;
+	float:left!important;
+	
+}
+.pop-container,.t-container,.r-container{
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:2;
+	background:rgba(0,0,0,0.7);
+	padding-left:20px;
+	padding-top:30px;
+	padding-right:20px;
+	visibility:hidden;
+	opacity:0;
+}
+.pop-container.pop,.t-container.pop,.r-container.pop{
+	visibility:visible;
+	opacity:1;
+}
+
+
+.pop-content,.t-content,.r-content{
+	width:90%;
+	height:auto;
+	z-index:5!important;
+	align-items:center;
+	justify-content:flex-center;
+	position:relative;
+	background:#fff;
+	padding:10px;
+	box-shadow:inset 0px 0px  10px #555;
+	border-radius:10px;
+	font:bold 20px Arial;
+	transition:0.3s;
+	visibility:hidden;
+	opacity:0;
+	top:0%;
+}
+.pop-content.pop,.t-content.pop,.r-content.pop{
+	top:30%;
+	visibility:visible;
+	opacity:1;
+}
+
+.pop-content p,.t-content p,.r-content p{
+	color:#111;
+	text-align:center;
+}
+.pop-content button,.t-content button,.r-content button{
+	width:100px;
+	font:bold 15px Arial;
+	background:#000;
+	border:3px solid #777;
+	pointer-events:auto;
+	color:#ddd;
+	height:40px;
+	position:relative;
+	padding:0px;
+	border-radius:10px;
+}
+.pop-content button:first-child,.t-content button:first-child,.r-content button:first-child{
+	float:left;
+}
+.pop-content button:last-child,.t-content button:last-child,.r-content button:last-child{
+	float:right;
+	}
+.out-container{
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:3;
+	background:rgba(0,0,0,0.5);
+	padding-left:25px;
+	padding-right:25px;
+	padding-top:30px;
+	top:0;
+	left:0;
+	margin:0;
+	bottom:0;
+	visibility:hidden;
+	opacity:0;
+}
+.out-content{
+	top:110%;
+	position:relative;
+	width:92%;
+	height:auto;
+	padding:1px;
+	background:#fff;
+	border-radius:10px;
+	visibility:hidden;
+	opacity:0;
+	transition:0.5s ease-in-out;
+}
+
+.out-container.go{
+	visibility:visible;
+	opacity:1;
+}
+
+.out-container .out-content.go{
+	top:80%;
+	opacity:1;
+	visibility:visible;
+}
+.out-content p{
+	color:#000;
+	font:bold 25px Arial;
+	text-align:center;
+}
+.out-content span{
+	font-size:34px!important;
+}
+.button-container{
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	position:fixed;
+	z-index:100;
+	margin:0;
+	padding:0;
+	/*background:rgba(0,0,0,.1);*/
+	display:flex;
+	align-items:center;
+	pointer-events:none;
+	transition:0.5s ease-in-out;
+	justify-content:center;
+}
+.button-container .buttons{
+	width:200px;
+	padding:10px;
+	align-items:center;
+	justify-content:center;
+	z-index:200!important;
+	display:grid;
+	transform:rotate(0deg)translateX(70%)translateY(30%);
+	flex-direction:column;
+}
+
+.button-container .buttons button{
+	width:70px;
+	height:70px;
+	margin:13px;
+	border-radius:50%;
+	outline:none;
+	font:bold 15px Arial;
+	background:#222;
+	border:5px solid #444;
+	color:gold;
+	transition:0.5s ease-in-out;
+	transform:translateY(420px);
+	opacity:0;
+	position:relative;
+	visibility:hidden;
+}
+.button-container.active .buttons button:hover{
+	transform:scale(1.11);
+}
+.button-container.active .buttons button:first-child{
+	transition-delay:0.2s;
+	transform:translateY(0px);
+	opacity:1;
+	visibility:visible;
+
+}
+.button-container.active .buttons button:nth-child(2){
+	transition-delay:0.4s;
+	transform:translateY(0px);
+	opacity:1;
+	visibility:visible;
+
+}
+
+.button-container.active .buttons button:nth-child(3){
+	transition-delay:0.6s;
+	transform:translateY(0px);
+	opacity:1;
+	visibility:visible;
+
+}
+
+.button-container.active .buttons button:nth-child(4){
+	transition-delay:0.8s;
+	transform:translateY(0px);
+	opacity:1;
+	visibility:visible;
+	
+}
+#open-btn-container{
+	visibility:visible!important;
+	opacity:1!important;
+	z-index:700;
+	position:fixed;
+		width:70px;
+	height:70px;
+	margin:13px;
+	border-radius:50%;
+	outline:none;
+	font:bold 15px Arial;
+	background:#222;
+	border:5px solid #444;
+	color:gold;
+	transition:0.5s;
+	transform:translateY(590px);
+}
+#open-btn-container:hover{
+	transform:scale(1.1,1.1)translateY(590px);
+	}
+
+  </style>
+</head>
+
+<body>
+  <!-- Swiper -->
+  <div class="pop-container">
+  		<div class="pop-content">
+  			<p>Do you want to restore your current settings?</p>
+  			<button id="done">OK</button>
+  			<button id="cancel">Cancel</button>
+  		</div>
+  </div>
+  
+  <div class="t-container">
+  		<div class="t-content">
+  			<p>Do you want to restore your current settings?</p>
+  			<button id="t-done">OK</button>
+  			<button id="t-cancel">Cancel</button>
+  		</div>
+  </div>
+  
+  
+  <div class="r-container">
+  		<div class="r-content">
+  			<p>Do you want to restore your current settings?</p>
+  			<button id="r-done">OK</button>
+  			<button id="r-cancel">Cancel</button>
+  		</div>
+  </div>
+  
+   <div class="out-container">
+  		<div class="out-content">
+      	<p>Done &nbsp;&nbsp;&nbsp;<span class="fa fa-check"></span></p>
+    </div>
+   </div>
+   			<button id="open-btn-container">More</button>
+   <div class="button-container w3-animate-zoom">
+   		<div class="buttons">
+   			<button class="swiper-pagination">Vz</button>
+   			<button>Eq</button>
+   			<button>Ae</button>
+   			<button>Re</button>
+   			
+   		</div>
+   </div>
+  
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+      	<br>
+      	<input type="file"id="demo"webkitdirectory>
+      	<br>
+      	<p>Track&nbsp;:&nbsp;<span id="title">title here</span></p>
+      	<br>
+      	<input type="range"value="0"max=""min=""id="prog">
+      	<br>
+      	<br>
+      	<button class ="btn">Pause</button>
+      	<button class ="btn">Play</button>
+      	<br>
+      	<br>
+      	<div id="update">
+      		<span class="time">0:00</span><br><span class="time">0:00</span>
+      	</div>
+      	<div id="slider1"></div>
+      	<canvas></canvas>
+      </div>
+      
+      <div class="swiper-slide">
+      	<p>Equalizer</p>
+      	<hr>
+      	<br>
+      <select id="eqns">
+     	 <option selected value="">Preset</option>
+     	 <option value="highpass">Stereo</option>
+     	 <option value="bandpass">Bandpass</option>
+     	 <option value="allpass">Vocal Boost</option>
+     	 <option value="notch">Notch</option>
+      </select>
+      <br>
+     <div class="mon">
+      <p>Mono</p>
+	      <button class="mono">Off</button>
+	      <button class="mono">On</button>
+      </div>
+      <br>
+      <br>
+      <br>
+      <p>Treble : <span id="tt1">2345 dB</span></p>
+      <input type="range"value="2345"id="treble"max="8000"min="0"step="0.01">
+      <p>Stereo XT : <span id="tb2">0 dB</span></p>
+      <input type="range"value="0"max="3"id="treb-boost"min="0"step="0.01">
+      
+      <p>Bass :  <span id="bb1">37 dB</span></p>
+      <input type="range"value="37"max="120"min="0"step="0.01"id="bass">
+      
+      <p>Bass Boost : <span id="bb2">0 dB</span></p>
+      
+      <input type="range"value="0"max="2"min="0"step="0.01"id='bass-boost'>
+      <br>
+      <br>
+      <button id="reset"class="eq-reset">Reset</button>
+      <br>
+      </div>
+      
+      
+      <div class="swiper-slide">
+      	<p>Audio Tuning</p>
+      	<hr>
+      	<br>
+      	<p>Volume : <span id="vol">45 %</span></p>
+      <input type="range"id="vol-add"value="0.45"max="1"min="0"step="0.01">
+      <p>Speed Rate : <span id="sp-rate">1.00 xp </span></p>
+      <input type="range"id="rate-xp"value="1"max="2"min="0.5"step="0.01">
+      
+      <p>Balance : <span id="bal">0 dB</span></p>
+      <input type="range"value="0"id="balance"max="1"min="-1"step="0.01">
+      
+       <p>Audio Gain : <span id="audio-b">1.0 dB</span></p>
+      <input type="range"value="1"id="audio-boost"max="3"min="1"step="0.01">
+      
+      <p>Tuning the audio Limit</p>
+      
+      <p>Limit : <span id="limit">0 dB</span></p>
+      <input type="range"value="0"id="audio-limit"max="0"min="-100"step="0.01">
+      <br>
+      <br>
+      <button class="tuning"id="reset">Reset</button>
+      </div>
+      
+      
+      
+      <div class="swiper-slide">
+      	<p>Room Effects</p>
+      	<hr>
+      	<br>
+      <div class="switch">
+      	<span id="effects-on"class="fa fa-toggle-on"></span>
+      	<span id="effects-off"class="fa fa-toggle-off"></span>
+      </div>
+      
+     <select id="r-effects">
+     		<option value="">Preset</option>
+     		<option value="echo">Echo</option>
+     		<option value="auditorium">Auditorium</option>
+     		<option value="scene">Scene</option>
+     		<option value="smallroom">Small Room</option>
+     		<option value="medium">Medium Room</option>
+     		<option value="greathall">Great Hall</option>
+     		<option value="stadium">Stadium</option>
+     </select>
+      <br>
+      <br>
+      <p>Delay 01 : <span id="d1">0 dB</span></p>
+      <input type="range"id="d1-v"value="0"max="1.6"min="0"step="0.01">
+      
+      <p>Size 01 : <span id="s1">0 dB</span></p>
+      <input type="range"id="s1-v"value="0"max="1.5"min="0"step="0.01">
+      
+      <p>Delay 02 : <span id="d2">0 dB</span></p>
+      <input type="range"id="d2-v"value="0"max="1.6"min="0"step="0.01">
+      
+      <p>Size 02 : <span id="s2">0 dB</span></p>
+      <input type="range"value="0"id="s2-v"max="1.5"min="0"step="0.01">
+      <br>
+      <br>
+      <button id="reset"class="room">Reset</button>
+      </div>
+      <!--div class="swiper-slide"></div-->
+    </div>
+  </div>
+  
+ 
+
+  <!-- Swiper JS -->
+  <script src="swiper-bundle.min.js"></script>
+  <script src="webkit-input-range-fill-lower.min.js"></script>
+  <script src="Jquery/jquery-1.9.1.min.js"></script>
+  <script src="Jquery/jquery-ui.min.js"></script>
+  <script src="Eq.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 0,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+    
+    document.addEventListener("DOMContentLoaded",()=>{
+			 new WebkitInputRangeFillLower({
+        selectors: ['bass','treble','treb-boost','bass-boost','vol-add','rate-xp','balance','audio-boost','audio-limit','d1-v','s1-v','d2-v','s2-v'],
+        color: '#63cdff'
+      });
+			 new WebkitInputRangeFillLower({
+			 selectors:['audio-boost','rate-xp'],
+      	  color: '#63cdff'
+			});
+		});
+	(function($){
+			$('#effects-off').hide();
+			$('#effects-on').on('click',function(){
+				$(this).hide();
+			$('#effects-off').show();
+			});
+			
+			$('#effects-off').on('click',function(){
+				$(this).hide();
+			$('#effects-on').show();
+			});
+	$("#open-btn-container").click(function(){
+		$(".button-container").toggleClass("active");
+		//$(this).css("opacity","0");
+	});
+		
+	
+	})(jQuery);
+	$(function(){
+	setInterval(function(){
+					var num = Math.floor(Math.random()*100)
+					return num;
+				},1000)
+		$("#slider1").slider({
+			value:function(){
+				
+			}
+		});
+	});
+	
+	//resetSetting("#reset");
+	
+	var q = new Eq();
+		q.getFile('#demo');
+		q.getProgressData('#prog');
+		q.getControlButtons(".btn");
+		q.timeUpdate(".time");
+		q.getTempo("#rate-xp","#sp-rate");
+		q.getAudioVolume("#vol-add","#vol");
+  </script>
+</body>
+
+</html>

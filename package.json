@@ -1,0 +1,29 @@
+{
+    "name": "jplayer",
+    "version": "1.0.0",
+    "description": "Explore the power of music",
+    "main": "Eq.html",
+    "scripts": {
+        "jdroid": "nodemon server.js",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://www.github.com/Mugamba669/"
+    },
+    "devDependencies": {
+        "node": "^12.16.2",
+        "nodemon": "^2.0.7"
+    },
+    "keywords": [
+        "run"
+    ],
+    "author": "Bruno-Jx",
+    "license": "ISC",
+    "dependencies": {
+        "dat.gui": "^0.7.7",
+        "font-awesome": "^4.3.0",
+        "mysql": "^2.18.1",
+        "simplex-noise": "^2.4.0"
+    }
+}

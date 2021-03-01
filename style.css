@@ -1,0 +1,45 @@
+.spiral {
+    top: 20%;
+    position: absolute;
+    width: 100%;
+}
+
+body {
+    background: rgba(0, 0, 0, 1);
+}
+
+@media only screen and (min-width:250px) {
+    canvas {
+        width: 47%;
+    }
+    canvas:first-child {
+        transform: translateX(5.3px)scaleX(-1);
+    }
+    canvas:nth-child(3) {
+        transform: rotate(180deg)translateY(3.4px)translateX(-6px);
+    }
+    canvas:last-child {
+        transform: rotate(180deg)scaleX(-1)translateY(4.7px);
+    }
+    .spiral {
+        left: 5%;
+    }
+}
+
+@media only screen and (min-width:929px) {
+    canvas {
+        width: 40%;
+    }
+    canvas:first-child {
+        transform: translateX(9.3px)scaleX(-1);
+    }
+    canvas:nth-child(3) {
+        transform: rotate(180deg)translateY(8.4px)translateX(-9.9px);
+    }
+    canvas:last-child {
+        transform: rotate(180deg)scaleX(-1)translateY(8.4px);
+    }
+    .spiral {
+        left: 10%;
+    }
+}

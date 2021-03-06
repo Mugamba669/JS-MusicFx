@@ -157,13 +157,19 @@ hr {
     transform: translateY(-20px)translateX(-30px);
 }
 
-canvas {
+.bv,
+.sv,
+.db {
     width: 100%;
     height: 300px;
-    /* background:rgba(0,0,0,0.7); */
+    /* background: rgba(0, 0, 0, 0.7); */
     display: block;
     position: absolute;
-    top: 30%;
+    top: 20%;
+}
+
+.bv {
+    top: 30%!important;
 }
 
 #dw-bars-visual {
@@ -172,7 +178,7 @@ canvas {
 
 #dw-bars-visual {
     /* top: 0%; */
-    transform: rotateY(180deg) scale(-1)translateY(-295.6px);
+    transform: rotateY(180deg) scale(-1)translateY(-294.6px);
 }
 
 .room,
@@ -432,7 +438,8 @@ select {
     content: "";
     width: 10px;
     height: 10px;
-    border: 1px solid #222;
+    border: 2px solid #eee;
+    box-shadow: 0px 0px 6px 1px #eee;
     padding: 7px;
     left: 0px;
     top: -13px;
@@ -447,7 +454,7 @@ select {
     width: 1px;
     height: 1px;
     position: absolute;
-    background: linear-gradient(-90deg, #000, #666);
+    background: linear-gradient(-90deg, #000, #555);
     padding: 4px;
     top: -3.8px;
     transition: 0.2s ease-in-out;
@@ -507,11 +514,105 @@ select {
 }
 
 .box .body {
-    max-width: 300px;
+    max-width: 400px;
     top: 30%;
+    text-align: justify center;
     align-items: center;
     justify-content: space-between;
     height: auto;
     background: rgba(0, 0, 0, 0.75);
-    color: gold;
+    color: #eee;
+}
+
+.spiral {
+    top: -23%;
+    position: relative;
+    width: 100vh;
+    background: transparent;
+}
+
+@media only screen and (min-width:250px) {
+    .sp1 {
+        width: 36%;
+        height: 50vh;
+    }
+    .sp1:first-child {
+        transform: translateX(5.3px)scaleX(-1);
+    }
+    .sp1:nth-child(3) {
+        transform: rotate(180deg)translateY(8.7px)translateX(-5px);
+    }
+    .sp1:last-child {
+        transform: rotate(180deg)scaleX(-1)translateY(8.7px);
+    }
+    .spiral {
+        left: 5%;
+    }
+}
+
+@media only screen and (min-width:929px) {
+    .sp1 {
+        width: 49.6%;
+        height: 50vh;
+    }
+    .sp1:first-child {
+        transform: translateX(5.3px)scaleX(-1);
+    }
+    .sp1:nth-child(3) {
+        transform: rotate(180deg)translateY(8.4px)translateX(-5.5px);
+    }
+    canvas:last-child {
+        transform: rotate(180deg)scaleX(-1)translateY(8.4px);
+    }
+    .spiral {
+        left: 17%;
+    }
+}
+
+.load-body {
+    background: #444;
+    height: 0vh;
+    top: 100%;
+    width: 90%;
+    position: absolute;
+    /* z-index: 10!important; */
+    padding: 10px;
+    left: 10px;
+    color: #eee;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    transition: 0.3s ease-in-out;
+    text-align: center;
+}
+
+.load-body.active {
+    top: 70%;
+    height: 40vh;
+}
+
+.load-body.close {
+    top: 100%;
+    height: 0vh;
+}
+
+.load-body button {
+    cursor: pointer !important;
+    width: 50px!important;
+    border: 2px solid #555!important;
+    font-size: 15px!important;
+}
+
+.load-body b {
+    font: bold 20px Helvitca!important;
+}
+
+.auto {
+    /* position: absolute; */
+    float: right;
+}
+
+.auto button {
+    width: 75px!important;
+    margin-right: 18px;
+    font: bold 12px Arial!important;
 }

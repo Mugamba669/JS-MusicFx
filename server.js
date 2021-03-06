@@ -29,6 +29,9 @@ var server = http.createServer((request, response) => {
         case ".jpeg":
             type = "image/jpeg";
             break;
+        default:
+            type = "text/plain";
+            break;
     }
     fs.readFile(url, (error, data) => {
         if (error) {

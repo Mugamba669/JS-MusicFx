@@ -44,6 +44,11 @@
             <button id="r-cancel">Cancel</button>
         </div>
     </div>
+
+    <div class="w3-modal w3-container w3-animate-bottom anime">
+
+    </div>
+
     <!-- deprected -->
     <div id="mono-error" class="w3-animate-zoom w3-modal">
         <div class="w3-modal-content w3-khaki">
@@ -75,6 +80,7 @@
             <p class="w3-hover-light-blue"> Visual dancing bars</p>
             <p class="w3-hover-light-blue"> Visual spectrum bars</p>
             <p class="w3-hover-light-blue"> Visual double dancing bars</p>
+            <p class="w3-hover-light-blue"> Visual spiral center bars</p>
         </div>
     </div>
 
@@ -107,15 +113,24 @@
                     </div>
                 </div>
 
+                <div class="spiral">
+                    <canvas class="sp1"></canvas>
+                    <canvas class="sp1"></canvas>
+                    <canvas class="sp1"></canvas>
+                    <canvas class="sp1"></canvas>
+                </div>
 
                 <div class="double-visual">
-                    <canvas id="up-bars-visual"></canvas>
-                    <canvas id="dw-bars-visual"></canvas>
+                    <canvas class="db" id="up-bars-visual"></canvas>
+                    <canvas class="db" id="dw-bars-visual"></canvas>
                 </div>
+
+
                 <div class="norm-visual">
-                    <canvas id="bars-visual"></canvas>
-                    <canvas id="spec-visual"></canvas>
+                    <canvas class="bv" id="bars-visual"></canvas>
+                    <canvas class="sv" id="spec-visual"></canvas>
                 </div>
+
                 <div style='background:transparent;padding: 0px;' class="w3-bottom">
                     <button class="w3-button" id="feedback">Feedback</button>
 
@@ -141,14 +156,9 @@
      	 <option value="pop">Pop</option>
       </select>
                 <br>
-                <!-- <div class="mon">
-                    <h4 class="w3-black w3-round">Enable auto-equalizer</h4>
-                    <button class="auto-off">Off</button>
-                    <button class="auto-on">On</button>
-                </div><br> -->
-
-                <!-- <p>Treble : <span id="tt1">2345 dB</span></p>
-      <input type="range"value="2345"id="treble"max="8000"min="0"step="0.01"> -->
+                <div class="auto">
+                    <button>Auto-EQ</button>
+                </div>
                 <p>Stereo XT : <span id="tb2">0 dB</span></p>
                 <input type="range" value="0" max="3" id="treb-boost" min="0" step="0.01">
 
@@ -162,6 +172,13 @@
                 <br>
                 <button id="reset" class="eq-reset">Reset</button>
                 <br>
+
+                <div class="load-body">
+                    <b style="text-align: center;"><U>ATTENTION!!!</U></b><br>
+                    <i style="color: white;font:bolder 15px Arial;">* By enabling this feature the player will be in able automatically select a suitable <em>EQ</em> for any track playing</i> <br>
+                    <button id="ok">Ok</button>
+                    <button id="can">Cancel</button>
+                </div>
             </div>
 
 

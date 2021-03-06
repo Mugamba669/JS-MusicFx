@@ -106,17 +106,23 @@ $("#bars-visual").show().css("transform", "translateY(115px)");
 $("#spec-visual").hide();
 $("#up-bars-visual").hide();
 $("#dw-bars-visual").hide();
+$(".spiral").hide();
+
 
 $(".body p").eq(0).click(function() {
     $("#bars-visual").show();
     $("#spec-visual").hide();
     $(".double-visual").hide();
+    $(".spiral").hide();
+
 });
 
 $(".body p").eq(1).click(function() {
     $("#spec-visual").show();
     $("#bars-visual").hide();
     $(".double-visual").hide();
+    $(".spiral").hide();
+
 });
 
 $(".body p").eq(2).click(function() {
@@ -125,7 +131,24 @@ $(".body p").eq(2).click(function() {
     $("#dw-bars-visual").show();
     $("#spec-visual").hide();
     $("#bars-visual").hide();
+    $(".spiral").hide();
+
 });
+// $(".spiral").click(function() { $(this).hide(); });
+$(".body p").eq(3).click(function() {
+    $(".double-visual").hide();
+    $("#up-bars-visual").hide();
+    $("#dw-bars-visual").hide();
+    $("#spec-visual").hide();
+    $("#bars-visual").hide();
+    $(".spiral").show();
+});
+
+$(".auto button").click(function() {
+    $(".load-body").show().addClass("active");
+});
+
+
 // getTrackId("#demo");
 //resetSetting("#reset");
 

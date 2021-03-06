@@ -9,16 +9,17 @@ body {
 }
 
 @media only screen and (min-width:250px) {
-    canvas {
-        width: 47%;
+    .sp1 {
+        width: 49.63%;
+        height: 40vh;
     }
-    canvas:first-child {
+    .sp1:first-child {
         transform: translateX(5.3px)scaleX(-1);
     }
-    canvas:nth-child(3) {
-        transform: rotate(180deg)translateY(3.4px)translateX(-6px);
+    .sp1:nth-child(3) {
+        transform: rotate(180deg)translateY(4.4px)translateX(-5px);
     }
-    canvas:last-child {
+    .sp1:last-child {
         transform: rotate(180deg)scaleX(-1)translateY(4.7px);
     }
     .spiral {
@@ -27,13 +28,13 @@ body {
 }
 
 @media only screen and (min-width:929px) {
-    canvas {
+    .sp1 {
         width: 40%;
     }
-    canvas:first-child {
+    .sp1:first-child {
         transform: translateX(9.3px)scaleX(-1);
     }
-    canvas:nth-child(3) {
+    .sp1:nth-child(3) {
         transform: rotate(180deg)translateY(8.4px)translateX(-9.9px);
     }
     canvas:last-child {

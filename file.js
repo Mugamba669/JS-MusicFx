@@ -44,7 +44,7 @@ class Visualizer {
                 for (let index = 0; index < elem.width; index++) {
                     var barX = index * 2;
                     var barWidth = 1.5;
-                    var element = freqDomain[index] / 256;
+                    var element = freqDomain[index] / 200;
                     var offset = elem.height * element;
                     var height = elem.height - offset - 1;
                     context.fillRect(barX, height, barWidth, offset);

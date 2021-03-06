@@ -8,5 +8,5 @@ document.querySelector("#ld").onchange = function(e) {
     audio.src = URL.createObjectURL(file);
     console.log(audio.src);
     audio.play();
-    // audio.muted = true;
+
 }

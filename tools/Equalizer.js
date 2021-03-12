@@ -69,10 +69,10 @@
                              $(".load-body").removeClass("active");
                          });
 
-                         $(".swipe-slide").click(function() {
-                             // alert("Operation cancelled clicked.");
-                             $(".load-body").removeClass("active");
-                         });
+                         //  $(".swipe-slide").click(function() {
+                         //      // alert("Operation cancelled clicked.");
+                         //      $(".load-body").removeClass("active");
+                         //  });
 
                          this._("#ok").onclick = (e) => {
                              var gen = tags.genre.toLowerCase();
@@ -122,7 +122,7 @@
                                      break;
                              }
                              // // alert("Done!");
-                             _(".load-body").classList.removeClass("active");
+                             _(".load-body").classList.remove("active");
 
 
                          }

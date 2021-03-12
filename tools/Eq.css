@@ -525,16 +525,16 @@ select {
 }
 
 .spiral {
-    top: -23%;
+    top: -6%;
     position: relative;
     width: 100vh;
     background: transparent;
 }
 
-@media only screen and (min-width:250px) {
+@media only screen and (min-width:120px) {
     .sp1 {
-        width: 36%;
-        height: 50vh;
+        width: 25%;
+        height: 30vh;
     }
     .sp1:first-child {
         transform: translateX(5.3px)scaleX(-1);
@@ -546,6 +546,27 @@ select {
         transform: rotate(180deg)scaleX(-1)translateY(8.7px);
     }
     .spiral {
+        /* top: 2%; */
+        left: 5%;
+    }
+}
+
+@media only screen and (min-width:250px) {
+    .sp1 {
+        width: 33%;
+        height: 40vh;
+    }
+    .sp1:first-child {
+        transform: translateX(5.3px)scaleX(-1);
+    }
+    .sp1:nth-child(3) {
+        transform: rotate(180deg)translateY(8.7px)translateX(-5px);
+    }
+    .sp1:last-child {
+        transform: rotate(180deg)scaleX(-1)translateY(8.7px);
+    }
+    .spiral {
+        /* top: 2%; */
         left: 5%;
     }
 }

@@ -8,7 +8,7 @@ var swiper = new Swiper('.swiper-container', {
         clickable: true,
     },
 });
-
+console.log(swiper.cubeEffect.setTransition);
 document.addEventListener("DOMContentLoaded", () => {
     new WebkitInputRangeFillLower({
         selectors: ['bass', 'treble', 'treb-boost', 'bass-boost', 'vol-add', 'rate-xp', 'balance', 'audio-boost', 'audio-limit', 'd1-v', 's1-v', 'd2-v', 's2-v'],
@@ -41,27 +41,26 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#close-log").click(function() {
         $("#changelog").hide();
     });
-    // audio pause and play
-    $("#pause").hide();
-    $("#pause").click(function() {
-        $(this).hide();
-        $("#play").show();
-    })
-
-    $("#play").click(function() {
-        $(this).hide();
-        // $("canvas").fadeIn(700);
-        $("#pause").show();
-    });
+    
 
 
     $("#add-music").click(function() {
         $("#demo").click();
         // alert();
     })
-    $("#feedback").click(function() {
+    $('#feedback').click(function() {
         location = "mailto:brunohectre@gmail.com";
     })
+    // animate title
+    // if (($('.title').text()).length > 10) {
+    //     // $('.title').css('color','red')
+    //     console.log(($('.title').text()).length)
+    // } else {
+    //     $('.title').css('color','green')
+    //     console.log(($('.title').text()).length)
+
+        
+    // }
 })(jQuery);
 $(function() {
     setInterval(function() {
@@ -147,7 +146,14 @@ $(".body p").eq(3).click(function() {
 $(".auto button").click(function() {
     $(".load-body").show().addClass("active");
 });
+// 
+$("#prev").addClass('fa fa-step-backward')
+$("#next").addClass('fa fa-step-forward')
+// playlist
+$('#playlist').click(function(){
+    $(".plist").addClass('w3-show')
 
+})
 
 // getTrackId("#demo");
 //resetSetting("#reset");
@@ -160,3 +166,4 @@ q.timeUpdate(".time");
 q.getTempo("#rate-xp", "#sp-rate");
 q.getAudioVolume("#vol-add", "#vol");
 q.repeatTrack("#repeat-on,#repeat-off");
+q.getPlaylist("#tracks");

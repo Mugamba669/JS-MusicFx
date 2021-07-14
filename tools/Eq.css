@@ -546,16 +546,33 @@ select {
 #close-log {
     float: right;
 }
-
+.fab{
+  padding: auto;
+}
+.fab .btn-fab{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    border-radius: 50%;
+    border: 2px solid lightblue;
+    background: #444;
+    font-size: large;
+    cursor: pointer;
+    color: #fff;
+}
 #change-cont {
     user-select: none;
+    background: #333;
+    color: #fff;
     padding: 10px;
     top: 20%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     max-height: 300px;
     border-radius: 10px;
-    padding-bottom: 10px;
-    font-size: 13px!important;
+    /* padding-bottom: 10px; */
+    font-size: 10px!important;
 }
 
 #change-cont dl {
@@ -649,6 +666,20 @@ select {
     /* box-sizing: border-box; */
 }
 
+#change-cont::-webkit-scrollbar{
+    -webkit-appearance: none;
+    border-radius: 5px;
+    background: #ddd;
+    height: 10px;
+    width: 10px;
+    margin: 10px;
+}
+
+#change-cont::-webkit-scrollbar-thumb{
+    background: gray;
+    border-radius: 5px;
+    height: 5px;
+}
 .box .body {
     max-width: 400px;
     top: 30%;

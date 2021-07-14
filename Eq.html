@@ -51,23 +51,24 @@
         </div>
     </div>
     <!-- Changelog -->
-    <!-- <div id="changelog" class="w3-container w3-modal w3-animate-opacity">
+    <div id="changelog" class="w3-modal">
         <div id="change-cont" style="overflow: auto;" class="w3-modal-content">
-            <dl>Quick Guide</dl>
+            <dl class="w3-text-green">Quick Guide</dl>
             <dt>
             <p><dd><li>To use this app click on <b>"Add music"</b>  button at the and select your favourite song to see how it works</li></dd></p>
-            <p><dd><li>Swipe on the screen <<< [left]&nbsp;&nbsp;&nbsp;&nbsp;and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>>> [right] to navigate more features.</li></dd></p>
+            <p><dd><li>Swipe on the screen <b class="w3-tag w3-round"><<< [left]</b>&nbsp;&nbsp;and&nbsp;&nbsp;<b class="w3-tag w3-round">[right]>>></b> to navigate more features.</li></dd></p>
+            <p><dd class=""><li>Added <b class="w3-tag w3-round">playlist button</b> where you can import a folder containing your music files.<label class="w3-tag w3-khaki w3-round">!!! This feature is only for desktop users</label></label> </li></dd></p>
             <p><dd><li>And please kindly provide your feedback about your experience.</li></dd></p>
           </dt>
             <dl>
-                <dt class="w3-tag w3-black">Changelog</dt><br>
-                <!-- <dd> <span class="w3-tag w3-red">New*</span>&nbsp;Auto EQ-Tunner.</dd><br> --
-                <dd><span class="w3-tag w3-red">New*</span>&nbsp;Additional tune in the equalizer <b class="w3-tag black w3-round">Dance-Hall</b></dd>
+                <!-- <dt class="w3-tag w3-black">Changelog</dt><br> -->
+                <!-- <dd> <span class="w3-tag w3-red">New*</span>&nbsp;Auto EQ-Tunner.</dd><br> -->
+                <dd class="w3-text-white"><span class="w3-tag w3-red">New*</span>&nbsp;Additional tune in the equalizer <b class="w3-tag black w3-round">Dance-Hall</b></dd>
             </dl>
-            <div>
-                <button class="w3-button w3-indigo w3-round" id="close-log">Done</button>
+            <div class="fab">
+                <button class="btn-fab fa fa-check" id="close-log"></button>
             </div>
-        </div> -->
+        </div>
     </div>
     <!-- pop up for visualizers-->
     <div class="box w3-modal w3-animate-top">
@@ -91,9 +92,7 @@
                         <div class="image-container">
                             <img src="" id="trackId" alt="TrackId">
                         </div>
-                        <!-- <p>Track&nbsp;:&nbsp;<span  id="title">title appears here</span></p>
-                        <p>Artist&nbsp;:&nbsp;<span class="w3-tag" id="artist"></span></p>
-                        <p>Size&nbsp;:&nbsp;<span class="w3-tag" id="size"></span></p> -->
+                       
                         <div class="btn-container">
                             <button id="prev"></button>
                             <button id="pause" style="cursor: pointer;" class="fa fa-pause"></button>

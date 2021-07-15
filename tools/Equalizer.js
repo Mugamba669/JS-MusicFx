@@ -11,6 +11,23 @@ class Equalizer {
             this.q = function(select) {
                 return document.querySelectorAll(select);
             }
+            window.onload = ()=>{
+                this._('#trackId').style.animationPlayState = 'paused';
+            }
+            this.audio.onpause = ()=>{
+                this._('#trackId').style.animationPlayState = 'paused';
+                // this._('#trackId').style.Transform = 'scale(0.7)';
+            }
+
+            this.audio.onended = ()=>{
+                this._('#trackId').style.animationPlayState = 'paused';
+                // this._('#trackId').style.Transform = 'scale(0.7)';
+            }
+
+            this.audio.onplay = ()=>{
+                this._('#trackId').style.animationPlayState = 'running';
+                // this._('#trackId').style.Transform = 'scale(0.7)';
+            }
             this.upload = function(e) {
                 var file = e.currentTarget.files[0];
                 this.fileInfo.trackId(file);
@@ -62,8 +79,8 @@ class Equalizer {
                 trackId: (file) => {
                     var url = URL.createObjectURL(file);
                     this.audio.src = url;
-                    $("#play").hide();
-                    $("#pause").show();
+                    // $("#play").hide();
+                    // $("#pause").show();
                    
                     // Audio play and Pause
                   

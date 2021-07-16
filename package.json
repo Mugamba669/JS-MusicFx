@@ -21,9 +21,14 @@
     "author": "Bruno-Jx",
     "license": "ISC",
     "dependencies": {
+        "browser-id3-writer": "^4.4.0",
+        "browserify-fs": "^1.0.0",
         "dat.gui": "^0.7.7",
         "font-awesome": "^4.3.0",
+        "musicmatch": "^0.3.2",
         "mysql": "^2.18.1",
+        "natural": "^5.0.3",
+        "node-id3": "^0.2.3",
         "simplex-noise": "^2.4.0"
     }
 }

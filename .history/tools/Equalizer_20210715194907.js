@@ -3,7 +3,7 @@
 class Equalizer {
 
     constructor() {
-        //    this.queue = [];
+           this.queue = [];
             this.audio = new Audio();
             this._ = function(selector) {
                 return document.querySelector(selector);
@@ -12,21 +12,22 @@ class Equalizer {
                 return document.querySelectorAll(select);
             }
             window.onload = ()=>{
-                this._('#trackId').style.transform = 'scale(0.5)';
+                this._('#trackId').style.transformStyle = 'scale(0.7)';
                 this._('#trackId').style.animationPlayState = 'paused';
             }
             this.audio.onpause = ()=>{
                 this._('#trackId').style.animationPlayState = 'paused';
-                this._('#trackId').style.transform = 'scale(0.7)';
+                this._('#trackId').style.transformStyle = 'scale(0.7)';
             }
 
             this.audio.onended = ()=>{
-                this._('#trackId').style.transform = 'scale(1)';
+                this._('#trackId').style.transformStyle = 'scale(1)';
                 this._('#trackId').style.animationPlayState = 'paused';
+                // this._('#trackId').style.Transform = 'scale(0.7)';
             }
 
             this.audio.onplay = ()=>{
-                this._('#trackId').style.transform = 'scale(1)';
+                this._('#trackId').style.transformStyle = 'scale(1)';
                 this._('#trackId').style.animationPlayState = 'running';
                 // this._('#trackId').style.Transform = 'scale(0.7)';
             }

@@ -1,0 +1,1 @@
+const tags = require('mp3tag.js');

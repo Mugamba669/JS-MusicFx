@@ -12,7 +12,7 @@ class Equalizer {
                 return document.querySelectorAll(select);
             }
             window.onload = ()=>{
-                this._('#trackId').style.transform = 'scale(0.5)';
+                this._('#trackId').style.transform= 'scale(0.5)';
                 this._('#trackId').style.animationPlayState = 'paused';
             }
             this.audio.onpause = ()=>{

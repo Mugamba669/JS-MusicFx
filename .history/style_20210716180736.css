@@ -1,0 +1,36 @@
+input{
+    width: 330px;
+    margin: 10px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    outline: none;
+    padding: 10px;
+}
+
+input:hover{
+    border: 1px solid #444;
+
+}
+.tags-editor{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.tags-editor h4{
+    font: lighter 19px Arial;
+}
+.editor{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+} 
+.tags-editor .btn-controls{
+    display: flex;
+    justify-content: center;
+    
+}
+.tags-editor .btn-controls button{
+    position: absolute;
+    margin: 10px;
+}

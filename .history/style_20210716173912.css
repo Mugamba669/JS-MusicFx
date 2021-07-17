@@ -1,0 +1,14 @@
+section.editor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+.editor .tags-container{
+    /* position: fixed; */
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flexbox;
+    flex-direction: column;
+}

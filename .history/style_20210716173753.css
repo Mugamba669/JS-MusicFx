@@ -1,0 +1,9 @@
+section.editor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.editor .tags-container{
+    position: fixed;
+    width: 100%;
+}

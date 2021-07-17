@@ -1,0 +1,32 @@
+section.editor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    padding:0;
+    margin: 0 !important;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #000;
+}
+.editor .tags-container{
+    /* position: fixed; */
+    z-index: 2;
+    width: 400px;
+    margin: 0 !important;
+    background: rgb(62, 74, 80);
+    margin: 10px;
+    height: 200px;
+    display: flexbox;
+    flex-direction: column;
+}
+.editor .tags-container .tags-editor{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    padding: 10px;
+}

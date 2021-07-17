@@ -49,4 +49,4 @@ var server = http.createServer((request, response) => {
 
 });
 var port = process.env.PORT || 2000;
-server.listen(port, console.log("Running on port 2000 http://127.0.0.1:2000"));
+server.listen(port, console.log("Running on port 2000"));

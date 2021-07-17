@@ -7,9 +7,6 @@
     "webplayer": "nodemon server.js",
     "start": "node server.js"
   },
-  "devDependences":{
-    "nodemon":"^2.0.7"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mugamba669/JS-MusicFx.git"

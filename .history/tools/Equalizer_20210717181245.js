@@ -795,7 +795,7 @@ function renderCanvas(music) {
     /* Stereo*/
     St_treble.type = 'highpass';
     St_treble.frequency.value = 4630.11;
-    St_treble.gain.value = 20;
+    // St_treble.gain.value = 20;
     St_treble.Q.value = 18;
 
     var valueSt = 0;

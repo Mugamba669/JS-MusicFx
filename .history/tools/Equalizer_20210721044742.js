@@ -347,7 +347,7 @@ class Equalizer {
         function hideLoader(time,playlist = []){
             console.info('Tracks loaded '+time+' ms')
             $('.success-container').show(function(){
-            document.querySelector('.msg').textContent = " ("+parseInt(playlist.length)+") tracks in "+" "+time+' ms';
+            document.querySelector('.msg').textContent = " ("+parseInt(playlist.length)+") tracks "+" "+time+' ms';
             }).delay(3500).hide(function(){
             $('.loader-container').hide();
             });

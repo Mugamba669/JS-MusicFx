@@ -246,8 +246,8 @@ hr {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    bottom: 170px;
-    right: 150px;
+    bottom: 15px;
+    right: 15px;
     border: none;
     cursor: pointer;
     background-color: green;
@@ -259,8 +259,8 @@ hr {
     transition: 0.3s cubic-bezier(0.975, 5, 0.22, 1.275);
     
 }
-.plist .list .fab-btn.active{
-    animation: fab-btn 1s infinite linear;
+.plist .list .fab-btn:hover{
+    transform: scale(1.1);
     background-color: blue;
     border: 2px solid skyblue;
 }

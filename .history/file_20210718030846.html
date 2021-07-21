@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<head>
+    <title>file</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    <section class="editor">
+        <!-- <div class="tags-container"> -->
+            <div class="tags-editor">
+                <h4>Tags Editor</h4>
+                <input type="text" placeholder="Title" value=""/>
+                <input type="text" placeholder="Artist"  value=""/>
+                <input type="text" placeholder="Album" value=""/>
+                <input type="text" placeholder="Genre" value=""/>
+                <input type="number" placeholder="Year" value=""/>
+                <input type="text" placeholder="Composer" value=""/>
+                <input type="text" placeholder="Description" value=""/>
+                <input type="radio"value="me"/>
+                <!-- <input type="button" placeholder="Album Cover"/> -->
+                <div class="btn-controls">
+                    <!-- <button type="reset">Cancel</button> -->
+                    <button onclick="printTags()">Done</button>
+                </div>
+            </div>
+        
+        <!-- </div> -->
+    </section>
+    <script src="/tools/jquery-1.9.1.min.js"></script>
+    <script type="module" src="./tagger.js"></script>
+    <!-- <script type="module" src="./node_modules/fs-web/dist/fs.min.js"></script> -->
+    <script>
+        // Nvigagtor object
+        console.log(navigator)
+        var tagInputs = document.querySelectorAll('input');
+        tagInputs.forEach((data,index) => tagsEditor(index,data));
+        function tagsEditor(index,input) {
+            switch (index) {
+                case 0:
+                    input.onblur = ()=>{
+                        tags.title = input.value;
+                    }
+                break;
+
+                case 1:
+                    input.onblur = ()=>{
+                        tags.artist = input.value;
+                    }
+                break;
+            
+                case 2:
+                    input.onblur = ()=>{
+                        tags.album = input.value;
+                    }
+                break;
+
+                case 3:
+                    input.onblur = ()=>{
+                        tags.genre = input.value;
+                    }
+                break;
+
+                case 4:
+                    input.onblur = ()=>{
+                        tags.year = input.value;
+                    }
+                break;
+
+                case 5:
+                    input.onblur = ()=>{
+                        tags.composer = input.value;
+                    }
+                break;
+
+                case 6:
+                    input.onblur = ()=>{
+                        tags.description = input.value;
+                    }
+                break;
+                default:
+                    break;
+            }
+        }
+function printTags(){
+    console.log(JSON.stringify(tags))
+}
+        let tags = {
+            title:"",
+            artist:"",
+            album:"",
+            description:"",
+            genre:"",
+            year:0,
+            composer:""
+        }
+    </script>
+
+</body> 
+
+</html>

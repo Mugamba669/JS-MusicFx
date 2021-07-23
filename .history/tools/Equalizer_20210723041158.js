@@ -709,9 +709,9 @@ function renderCanvas(music) {
 
                 case 'rnb':
                     treble.type = 'lowpass';
-                    treble.frequency.value = 49;
+                    treble.frequency.value = 60;
                     // treble.Q.value = 7;
-                    bass.frequency.value = 58;
+                    bass.frequency.value = 52;
                     // bass.gain.value = 15;
                     bassBoost.gain.setValueAtTime(2.0, audioCtx.currentTime);
                     _("#bass-boost").value = 2.0;

@@ -332,9 +332,6 @@ class Equalizer {
     }
     getPlaylist(selector){
         var that = this;
-        // hide next prev btns when not in playlist
-        $('#nextTrack').hide();
-        $('#prevTrack').hide();
     //    show pop up
         $('.loader-container').hide();
         $('.success-container').hide();
@@ -377,25 +374,15 @@ class Equalizer {
 
                var cover = $('<img/>').attr('src', that.base64Cover(image)).addClass('coverArt');
                $("<p></p>").text("  "+that.listTracks(title,data)).addClass('list-tile').prepend(cover).appendTo(".list").click(function(){
-        //  track next
-        that.audio.onended =  ()=>{ 
-            var next = index++;
-                var url = URL.createObjectURL(arrayList[next]);
-                nextTrack(url,arrayList[next])
-            }
-        // click to next track
-        $('#nextTrack').show().on('click',function(){
-            var next = index++;
-            var url = URL.createObjectURL(arrayList[next]);
-             nextTrack(url,arrayList[next]);
-           
-        });
-        //  click to back to prev track
-        $('#prevTrack').show().on('click',function(){
-            var prev = index--;
-             var url = URL.createObjectURL(arrayList[prev]);
-            prevTrack(url,arrayList[prev]);
-        });
+        //  track index
+        that.audio.onended = function(){
+          
+        console.log(arrayList[index+1])
+            url = URL.createObjectURL(arrayList[index+1]);
+            that.audio.src = url;
+            that.audio.play();
+    }
+         
                 $(".plist").removeClass("w3-show").addClass('w3-hide')
            that._('.title').classList.add('active');
                 that._('.artist').classList.add('active');
@@ -426,40 +413,6 @@ class Equalizer {
               $(this).addClass("fa fa-arrow-right");
           })
        });
-    //    next track function
-    const nextTrack = function(url,data){
-       
-        ID3.loadTags(url, () => {
-            var tags = ID3.getAllTags(url);
-            var image = tags.picture;
-
-        that.audio.src = url;
-        that.audio.play();
-        that.base64Image(image);
-        that.trackInfo(tags,data);
-        } , {
-        dataReader: FileAPIReader(data),
-        tags: ["title", "artist", "picture", "album","genre"]
-          });
-       }
-
-    //    previous track function
-      const prevTrack = function(url,data){
-        
-        ID3.loadTags(url, () => {
-            var tags = ID3.getAllTags(url);
-            var image = tags.picture;
-
-        that.audio.src = url;
-        that.audio.play();
-        that.base64Image(image);
-        that.trackInfo(tags,data);
-        } , {
-        dataReader: FileAPIReader(data),
-        tags: ["title", "artist", "picture", "album","genre"]
-          });
-       }
-
       
     }
     getAudioVolume(volu, ou) {
@@ -646,7 +599,7 @@ function renderCanvas(music) {
         }
         // limit.threshold.value = -25;
     limit.knee.value = 0;
-    limit.attack.value = 0.006;
+    limit.attack.value = 0.003;
     limit.ratio.value = 12;
     // limit.reduction.value = -1.5;
     limit.release.value = 0.25;
@@ -690,16 +643,16 @@ function renderCanvas(music) {
             switch (value) {
                 case 'normal':
                     treble.type = 'peaking';
-                    bass.frequency.value = 40;
-                    treble.frequency.value = 200;
+                    bass.frequency.value = 30;
+                    treble.frequency.value = 2000;
                     bassCon(source, bassBoost, bass, audioCtx);
-                    bassBoost.gain.setValueAtTime(1.40, audioCtx.currentTime);
+                    bassBoost.gain.setValueAtTime(2.40, audioCtx.currentTime);
                     stereo.frequency.value = 0.60;
-                    _("#bass").value = 40;
-                    _('#bb2').textContent = Math.floor(parseFloat(1.4).toFixed(1)) + ' dB';
-                    _('#bb1').textContent = Math.floor(parseFloat(40).toFixed(1)) + ' dB';
+                    _("#bass").value = 30;
+                    _('#bb2').textContent = Math.floor(parseFloat(2.4).toFixed(1)) + ' dB';
+                    _('#bb1').textContent = Math.floor(parseFloat(30).toFixed(1)) + ' dB';
                     _("#treb-boost").value = 0.60;
-                    _("#bass-boost").value = 1.4;
+                    _("#bass-boost").value = 2.4;
                     bst = 2.4;
                     _('#tb2').textContent = parseFloat(0.6).toFixed(3) + ' dB';
                     limit.threshold.setValueAtTime(-58.4, audioCtx.currentTime);
@@ -709,17 +662,15 @@ function renderCanvas(music) {
 
                 case 'rnb':
                     treble.type = 'lowpass';
-                    treble.frequency.value = 49;
-                    // treble.Q.value = 7;
-                    bass.frequency.value = 58;
-                    // bass.gain.value = 15;
-                    bassBoost.gain.setValueAtTime(2.0, audioCtx.currentTime);
-                    _("#bass-boost").value = 2.0;
-                    bst = 2.0;
+                    treble.frequency.value = 80;
+                    bass.frequency.value = 49;
+                    bassBoost.gain.setValueAtTime(3.0, audioCtx.currentTime);
+                    _("#bass-boost").value = 3.0;
+                    bst = 3.0;
 
-                    _("#bass").value = 52;
-                    _('#bb2').textContent = Math.floor(parseFloat(2.0).toFixed(1)) + ' dB';
-                    _('#bb1').textContent = Math.floor(parseFloat(52).toFixed(1)) + ' dB';
+                    _("#bass").value = 49;
+                    _('#bb2').textContent = Math.floor(parseFloat(3.0).toFixed(1)) + ' dB';
+                    _('#bb1').textContent = Math.floor(parseFloat(58).toFixed(1)) + ' dB';
                     bassCon(source, bassBoost, bass, audioCtx);
                     stereo.frequency.value = 0.8;
                     _('#tb2').textContent = parseFloat(0.8).toFixed(3) + ' dB';
@@ -729,18 +680,16 @@ function renderCanvas(music) {
 
                 case 'dance':
                     treble.type = 'lowpass';
-                    treble.frequency.value = 50;
-                    // treble.gain.value = 16;
+                    treble.frequency.value = 60;
                     dance.type = 'bandpass';
                     dance.frequency.value = 100;
-                    // dance.Q.value = 7;
-                    bass.frequency.value = 46;
-                    bassBoost.gain.setValueAtTime(2.7, audioCtx.currentTime);
-                    _('#bb2').textContent = Math.floor(parseFloat(2.7).toFixed(2)) + ' dB';
-                    _("#bass-boost").value = 2.7;
-                      bst = 2.7;
-                    _("#bass").value = 50;
-                    _('#bb1').textContent = Math.floor(parseFloat(50).toFixed(1)) + ' dB';
+                    bass.frequency.value = 55;
+                    bassBoost.gain.setValueAtTime(3.7, audioCtx.currentTime);
+                    _('#bb2').textContent = Math.floor(parseFloat(3.7).toFixed(2)) + ' dB';
+                    _("#bass-boost").value = 3.7;
+                    bst = 3.7;
+                    _("#bass").value = 58;
+                    _('#bb1').textContent = Math.floor(parseFloat(58).toFixed(1)) + ' dB';
                     bassConn(source, bassBoost, bass, dance, audioCtx);
                     stereo.frequency.value = 0.5;
                     _('#tb2').textContent = parseFloat(0.5).toFixed(3) + ' dB';
@@ -752,7 +701,6 @@ function renderCanvas(music) {
                     treble.type = 'bandpass';
                     treble.frequency.value = 0;
                     bass.frequency.value = 35;
-                    // bass.Q.value = 7;
                     bassBoost.gain.setValueAtTime(4.0, audioCtx.currentTime);
                     _("#treb-boost").value = 0.49;
                     stereo.frequency.value = 0.49;
@@ -771,15 +719,16 @@ function renderCanvas(music) {
                 case 'bass':
                     treble.type = 'bandpass';
                     treble.frequency.value = 0;
-                    bass.frequency.value = 55;
-                    // bass.Q.value = 3;
-                    bassBoost.gain.setValueAtTime(2.5, audioCtx.currentTime);
+                    
+                    bass.frequency.value = 58;
+                    // bass.Q.value = 20;
+                    bassBoost.gain.setValueAtTime(3.5, audioCtx.currentTime);
                     _("#treb-boost").value = 0.70;
                     stereo.frequency.value = 0.70;
-                    _("#bass").value = 55;
-                    bst = 2.5;
+                    _("#bass").value = 58;
+                    bst = 3.5;
                     _('#bb2').textContent = Math.floor(parseFloat(3.5).toFixed(1)) + ' dB';
-                    _("#bass-boost").value = 2.5;
+                    _("#bass-boost").value = 3.5;
                     _('#bb1').textContent = Math.floor(parseFloat(58).toFixed(1)) + ' dB';
                     bassCon(source, bassBoost, bass, audioCtx);
                     _('#tb2').textContent = parseFloat(0.7).toFixed(3) + ' dB';
@@ -867,7 +816,6 @@ function renderCanvas(music) {
                 case 'pop':
                     treble.type = 'notch';
                     bass.frequency.value = 70;
-                    bass.Q.value = 9;
                     treble.frequency.value = 600;
                     _("#treb-boost").value = 0.7;
                     stereo.frequency.value = 0.7;
@@ -891,7 +839,6 @@ function renderCanvas(music) {
         //  	mid
     stereo.type = 'highpass';
     stereo.frequency.value = 20000;
-    trebleBoost.gain.value = 0;
     //Connections	
     source.connect(trebleBoost);
     trebleBoost.connect(stereo);
@@ -906,8 +853,8 @@ function renderCanvas(music) {
     /* Stereo*/
     St_treble.type = 'highpass';
     St_treble.frequency.value = 4830.11;
-    St_treble.gain.value = 27;
-    St_treble.Q.value = 25;
+    St_treble.gain.value = 30;
+    St_treble.Q.value = 26;
 
     var valueSt = 0;
     source.connect(St_treble)
@@ -971,8 +918,6 @@ function renderCanvas(music) {
     treble.type = 'peaking';
     bass.frequency.value = 30;
     treble.frequency.value = 2000;
-    treble.Q.value = 16;
-    treble.gain.value = 10;
     _("#bass").value = 30;
     _("#treb-boost").value = 0.6;
     _('#bb1').textContent = Math.floor(parseFloat(30).toFixed(1)) + ' dB';
@@ -1291,7 +1236,7 @@ function bassConn(source, bassBoost, bass, dance, audioCtx) {
     source.connect(bassBoost);
     bassBoost.connect(bass);
     bass.connect(dance);
-    dance.connect( analyser);
+    dance.connect(analyser);
     analyser.connect(audioCtx.destination);
 }
 

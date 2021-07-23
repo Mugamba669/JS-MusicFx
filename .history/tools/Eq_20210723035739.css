@@ -173,8 +173,8 @@ hr {
 }
 /* pause play buttons */
 #pause , #play{
-    width: 60px !important;
-    height: 60px!important;
+    width: 45px !important;
+    height: 45px!important;
     text-align: center!important;
     
 }
@@ -972,8 +972,8 @@ font-size: 20px;
 border-radius: 50%;
 }
 .body-content .btn-container #nextTrack , #prevTrack{
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 .body-content .main-body{
     width: 600px;

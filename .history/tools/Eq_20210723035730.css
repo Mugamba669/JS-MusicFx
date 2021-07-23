@@ -173,8 +173,8 @@ hr {
 }
 /* pause play buttons */
 #pause , #play{
-    width: 60px !important;
-    height: 60px!important;
+    width: 45px !important;
+    height: 45px!important;
     text-align: center!important;
     
 }

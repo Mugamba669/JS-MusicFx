@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/tools/swiper-bundle.min.css">
+    <!-- <link rel="stylesheet" href="./tools/Eq.css"> -->
+    <style>
+        .swiper-container {
+    width: 50%;
+    height: 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: fixed !important;
+    z-index: -1!important;
+    top: 0 !important;
+    margin: 0 !important;
+    background-size: cover;
+    /* pointer-events: none; */
+    background-position: center;
+
+}
+.swiper-wrapper .swiper-slide {
+    user-select: none;
+    z-index: -2!important;
+    margin: 0 !important;
+    background: linear-gradient(-180deg, rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0.267),rgba(0, 0, 0, 0.32));
+    padding: 0px!important;
+}
+    </style>
+</head>
+<body>
+   <div class="swiper-container">
+       <div class="swiper-wrapper">
+           <div class="swiper-slide"><h1>gjgjfjjfj</h1></div>
+           <div class="swiper-slide"><h1>gjgjfjjfj</h1></div>
+           <div class="swiper-slide"><h1>gjgjfjjfj</h1></div>
+           <div class="swiper-slide"><h1>gjgjfjjfj</h1></div>
+       </div>
+   </div>
+</body>
+<script src="./tools/swiper-bundle.min.js"></script>
+<script src="./tools/dat.gui.min.js"></script>
+<!-- <script src="./tools/Eq.js"></script> -->
+<script>
+//    var controls = {
+//     spaceBetween: 60,
+//     parallax:true,
+//     speed:600,
+//     effect:"cube",// flip coverflow cube fade
+//     gradCursor:true,
+//     pagination: {
+//         el: '.swiper-pagination',
+//         clickable: true,
+//     },
+//     coverflowEffect: {
+//         rotate: 50,
+//         stretch: 0,
+//         depth: 100,
+//         modifier: 1,
+//         slideShadows: true,
+//       },
+//       cubeEffect: {
+//         shadow: false,
+//         slideShadows: false,
+//         shadowOffset: 20,
+//         shadowScale: 0.94,
+//       },
+//     navigation: {
+//         nextEl: ".swiper-button-next",
+//         prevEl: ".swiper-button-prev",
+//       },
+// }
+
+var cont = new function(){
+this.slideSpeed = 200;
+this.coverDepth = 20;
+this.sliderotate = 20;
+this.modals = "cube";
+}
+const modes = ['Flip','Coverflow','Cube','Fade']
+var gui = new dat.GUI();
+const updateControls = function(modal){
+    controls.effect = modal;
+}
+gui.add(cont,'slideSpeed',0,1000).onChange(e => controls.speed = e);
+var folder = gui.addFolder('Models').add(cont,'modals').options(modes).onChange(()=>  updateControls(cont.modals));
+folder.open();
+
+// var gui = new dat.GUI();
+
+</script>
+</html>

@@ -1,0 +1,32 @@
+body{
+    padding: 0px;
+    margin: 0;
+}
+
+.tags-container{
+    display: flex;
+    flex: content;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.tags-container .tags-editor{
+    width: 400px;
+    height: 400px;
+    background-color: #777;
+    padding: 0px;
+    display: flex;
+    flex: content;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+}
+.tags-container .tags-editor input{
+    width: 300px;
+    height: 50px;
+    margin: 10px;
+}

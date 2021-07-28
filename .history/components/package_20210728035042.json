@@ -1,0 +1,52 @@
+{
+  "name": "zikiDroid",
+  "version": "1.2.0",
+  "description": "Enjoy the power of music",
+  "main": "main.js",
+  "scripts": {
+    "webplayer": "nodemon server.js",
+    "serve": "node server.js",
+    "start": "electron ."
+  },
+  "devDependences": {
+    "nodemon": "^2.0.7",
+    "node": "12.18.2",
+    "electron": "^12.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mugamba669/JS-MusicFx.git"
+  },
+  "keywords": [
+    "electron",
+    "start",
+    "run"
+  ],
+  "author": "Mugamba Bruno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mugamba669/JS-MusicFx/issues"
+  },
+  "homepage": "https://github.com/Mugamba669/JS-MusicFx#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "*",
+    "genius-lyrics": "^4.2.9",
+    "genius-lyrics-api": "^3.0.6",
+    "node-id3": "^0.2.3",
+    "puppeteer": "^10.1.0"
+  },
+  "build":{
+    "appId":"com.musicaudios.audiodroid",
+    "copyright":"Copyright © 2021 MUGAMBA-BRUNO",
+    "productName":"AudioDroid",
+    "electronVersion":"1.3.1",
+    "linux": {
+          "target": [
+            "AppImage",
+            "deb"
+          ]
+        }
+  }
+ 
+}

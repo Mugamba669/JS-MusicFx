@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="/tools/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./tools/w3.css">
+    <style>
+        .swiper-container {
+    width: 90%;
+    height: 90%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: fixed !important;
+    left: 0%;
+    z-index: -1!important;
+    top: 0% !important;
+    margin: 30px !important;
+    background-size: cover;
+    /* pointer-events: none; */
+    background-position: center;
+
+}
+.swiper-wrapper .swiper-slide {
+    user-select: none;
+    z-index: -2!important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-180deg, rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0.267),rgba(0, 0, 0, 0.32));
+    padding: 0px!important;
+}
+    </style>
+</head>
+<body>
+
+    <select>
+        <option value="flip">Filp</option>
+        <option value="cube">Cube</option>
+        <option value="coverflow">CoverFlow</option>
+        <option value="fade">Fade</option>
+    </select>
+   <div class="swiper-container">
+      
+       <div class="swiper-wrapper">
+           <div class="swiper-slide w3-blue"><h1>gjgjfjjfj</h1></div>
+           <div class="swiper-slide w3-green"><h1>gjgjfjjfj</h1></div>
+           <div class="swiper-slide w3-khaki"><h1>gjgjfjjfj</h1></div>
+           <div class="swiper-slide w3-brown"><h1>gjgjfjjfj</h1></div>
+           <div class="swiper-slide w3-indigo"><h1>gjgjfjjfj</h1></div>
+           <div class="swiper-slide w3-orange"><h1>gjgjfjjfj</h1></div>
+       </div>
+   </div>
+</body>
+<script src="./tools/swiper-bundle.min.js"></script>
+<script>
+    var effect = 'cube';
+    var update = (change)=>{
+        return change;
+    }
+
+   var controls = {
+    spaceBetween: 60,
+    // parallax:true,
+    speed:600,
+    effect:"",// flip coverflow cube fade
+    gradCursor:true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      cubeEffect: {
+        shadow: true,
+        slideShadows: true,
+        shadowOffset: 10,
+        shadowScale: 1,
+      },
+}
+document.querySelector('select').onchange = function(){
+        controls.effect = this.value;
+ new Swiper('.swiper-container',controls)
+
+}
+new Swiper('.swiper-container',controls)
+
+
+</script>
+</html>

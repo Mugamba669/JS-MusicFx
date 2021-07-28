@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+</body>
+<script src="./tools/dat.gui.min.js"></script>
+<script>
+var cont = new function(){
+this.intesity = 2;
+this.sceneBackground = 0xfffffff;
+this.ambientLight = 0xffffff;
+this.ambientIntensity = 2
+this.directionLight;
+this.nearShadow = 0.2;
+this.farShadow = 10;
+this.rightShadow = -10;
+this.leftShadow = -10;
+this.topShadow = 10;
+this.bottomShadow = -10;
+}
+var gui = new dat.GUI();
+console.log(gui)
+// gui.add(cont,'intesi')
+</script>
+</html>

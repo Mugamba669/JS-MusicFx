@@ -1,0 +1,10 @@
+body{
+    padding: 0px;
+    margin: 0;
+}
+
+.tags-container{
+    display: flex;
+    flex: content;
+    flex-direction: column;
+}
